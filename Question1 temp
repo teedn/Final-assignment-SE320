@@ -1,0 +1,26 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] ) {
+
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("Enter weight in kilograms(kg): ");
+    double weightInKilograms = input.nextDouble();
+
+    System.out.println("Enter height in meters(m): ");
+    double heightInMeters = input.nextDouble();
+
+    double BMI = weightInKilograms / (heightInMeters * heightInMeters);
+
+    System.out.println("BMI: " + BMI);
+
+}
+
+public Server() {
+
+}
+
+public Client() {
+
+}
+}
