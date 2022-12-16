@@ -1,0 +1,60 @@
+import java.util.*;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class Assign3 {
+	private Data message;
+	private Socket connection;
+	private ObjectOutputStream outputToClient;
+	private ObjectInputStream inputFromClient; 
+	private double weightInKilograms;
+	private double heightInMeters;
+	private Socket client;
+	private String bmiServer;
+
+public Client(String host) {
+    Scanner userInput = new Scanner(System.in);
+    System.out.println("Enter weight in kilograms(kg): ");
+    double weightInKilograms = userInput.nextDouble();
+
+    System.out.println("Enter height in meters(m): ");
+    double heightInMeters = userInput.nextDouble();
+
+    message = new Data(weightInKilograms,heightInMeters);
+}
+
+public  void runClient() {
+    try {
+        //something
+    }
+    catch (EOFException eofException) {
+        displayMessage("Client: End-of-file/stream error");
+    }
+    catch(IOException ioException) {
+        displayMessage("IO mismatch exception");
+    }
+    finally {
+        closeConnection();
+    }
+}
+
+public void closeConnection() {
+    try {
+        outputToClient.close();
+        inputFromClient.close();
+        userInput.close();
+        connection.close();
+    }
+}
+private void sendData(Data, message) {
+    try {
+        outputToClient.writeObject(message);
+        outputToClient.flush();
+        displayMessage("Message sent to server");
+    }
+    catch (IOException ioException) {
+        displayMessage("IO exception ");
+    }
+    
+}
+}
