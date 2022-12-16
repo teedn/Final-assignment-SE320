@@ -2,7 +2,16 @@ import java.util.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Main {
+public class Assign3 {
+    private Data message;
+	private Socket connection;
+	private ObjectOutputStream outputToClient;
+	private ObjectInputStream inputFromClient;
+	private double weightInKilograms;
+	private double heightInMeters;
+	private Socket client;
+	private String bmiServer;
+    
     public static void main(String[] ) {
 
     Scanner userInput = new Scanner(System.in);
