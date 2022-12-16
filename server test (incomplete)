@@ -1,0 +1,45 @@
+import java.util.*;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class Main {
+    public static void main(String[] ) {
+
+    Scanner userInput = new Scanner(System.in);
+
+    System.out.println("Enter weight in kilograms(kg): ");
+    double weightInKilograms = userInput.nextDouble();
+
+    System.out.println("Enter height in meters(m): ");
+    double heightInMeters = userInput.nextDouble();
+
+    double BMI = weightInKilograms / (heightInMeters * heightInMeters);
+
+    System.out.println("BMI: " + BMI);
+
+    new Server();
+}
+
+public Server() {
+    try {
+        ServerSocket serverSocket = new ServerSocket(8000);
+
+        Socket socket = serverSocket.accept();
+
+        DataInputStream inputFromClient = new DataInputStream(socket.getInputStream());
+        DataOutputStream outputToClient = new DataOutputStream(socket.getOutputStream());
+        
+        while(true) {
+            double weightInKilograms = inputFromClient.readDouble();
+            double heightInMeters = inputFromClient.readDouble();
+
+            double BMI = weightInKilograms / (heightInMeters * heightInMeters);
+
+            outputToClient.writeDouble(BMI);
+        }
+    }
+    catch (IOException ioException) {
+        System.err.println(ioException);
+    }
+}
+}
